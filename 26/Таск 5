@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+import static java.lang.System.out;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        out.println("print w");
+        int w = scanner.nextInt();
+        out.println("print h");
+        int h = scanner.nextInt();
+        int ferstSlash = 1;
+        int secondSlesh = 1;
+        int step = 2;
+        for (int i = 0; i < h; i++) {
+            if (i == 0 || i == h - 1) {
+                out.print("*");
+
+                for (int j = 1; j < w - 1; j++) {
+                    out.print("-");
+                } out.println("*");
+
+            } else if (i < (h) / 2) {
+                out.print("|");
+//                out.print(ferstSlash);
+                int nextSlash = ferstSlash;
+
+                for (int a = 1; a < w - 1; a++) {
+                    char ch = ' ';
+                    if (a == nextSlash) {
+                        ch = '\\';
+                        nextSlash += 2;
+                    } out.print(ch);
+                }ferstSlash++;
+                out.println("|");
+                if (ferstSlash % 3 == 0) {
+                    ferstSlash = 1;
+
+                }
+
+                if (ferstSlash == 1){
+                    secondSlesh = 2;
+                }
+                if (ferstSlash == 2){
+                    secondSlesh = 1;
+                }
+            }else  {
+                out.print("|");
+                int bacnextSlash = secondSlesh;
+
+                for (int a = 1; a < w - 1; a++) {
+                    char ch = ' ';
+                    if (a == bacnextSlash) {
+                        ch = '/';
+                        bacnextSlash += step;
+
+                    }   out.print(ch);
+
+                }   secondSlesh--;
+                    out.println("|");
+                    if (secondSlesh % 3 == 0) {
+                        secondSlesh = 2;
+
+                    }
+            }
+        }
+    }
+}
